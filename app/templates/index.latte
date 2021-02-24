@@ -1,0 +1,49 @@
+{layout '@layout.latte'}
+
+{block content}
+<section class="fdb-block" style="background-image: url(imgs/shapes/9.svg);">
+  <div class="container">
+    <div class="row text-center justify-content-center">
+      <div class="col-md-10 col-lg-8 col-xl-7">
+        <h1>Zprávy z Twitteru</h1>
+        <p class="lead">Načtení zpráv z Twitteru, obsahujících #pilulka, #pilukacz nebo pilulka.cz</p>
+		{if $filter}
+			<p>Zobrazuje se posledních 100 zpráv včetně retweetů. <a href="/">Zobrazení zpráv bez retweetů</a></p>
+		{else}
+			<p>Zobrazuje se posledních 100 zpráv bez retweetů. <a href="/?filter=1">Zobrazení zpráv včetně retweetů</a></p>
+		{/if}
+		
+      </div>
+    </div>
+
+    <div class="row mt-5">
+      {foreach $results as $key => $status}
+	  <div class="col-md-8 col-lg-4 mb-5">
+        <div class="fdb-box h-100">
+          <div class="row no-gutters">
+            <div class="col-3">
+			  <a href="https://twitter.com/{$status->user->screen_name}"><img src="{$status->user->profile_image_url_https}" class="img-fluid rounded"></a>
+            </div>
+            <div class="col-8 ml-auto">
+              <p>
+                <strong>{$status->user->name}</strong><br>
+                <em><a href="https://twitter.com/{$status->user->screen_name}">@{$status->user->screen_name}</a></em>
+              </p>
+            </div>
+          </div>
+          <div class="row mt-4">
+            <div class="col-12">
+              <p>
+			  	<small>{strtotime($status->created_at)|date:'j.n.Y H:i'}</small><br />
+                {$tweets[$key]|noescape}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+	  {/foreach}
+
+    </div>
+  </div>
+</section>
+{/block}
