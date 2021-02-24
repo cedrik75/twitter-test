@@ -1,5 +1,6 @@
 {
     "require": {
+        "php": ">=7.1",
         "dg/twitter-php": "^4.1",
         "latte/latte": "^2.10"
     },
