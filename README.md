@@ -11,7 +11,7 @@ git clone https://github.com/cedrik75/twitter-test.git
 
 2. přepnutí se do složky s projektem
 ```
-cd twitter test
+cd twitter-test
 ```
 
 3. instalace knihoven pomocí Composeru
